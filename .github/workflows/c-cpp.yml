@@ -1,3 +1,30 @@
+name: C CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install GCC
+      run: sudo apt-get install gcc
+
+    - name: Compile C program
+      run: gcc -o output main.c
+
+    - name: Run program
+      run: ./output
+
 #include <iostream>
 
 void verificarSistema(int ram) {
